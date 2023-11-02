@@ -11,6 +11,7 @@
 
 Todo List
 
+- [x] upgrade releated packages to newest(fix breaking changes)
 - [x] Lamar(Setter Injection)
 - [x] CommunityToolkit.Mvvm(SourceGenerator)
 - [x] DialogService
