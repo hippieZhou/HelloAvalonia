@@ -1,25 +1,14 @@
-using System;
-using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
-using JetBrains.Annotations;
 
 namespace HelloAvalonia.Models;
 
-public interface ICatsImageService
-{
-    Task<Bitmap> GetRandomImage();
-}
-
-[UsedImplicitly]
 public class CatsImageService : ICatsImageService
 {
     private readonly HttpClient _httpClient;
 
-    public CatsImageService()
+    public CatsImageService(HttpClient httpClient)
     {
-        _httpClient = new HttpClient();
+        _httpClient = httpClient;
     }
 
     public async Task<Bitmap> GetRandomImage()

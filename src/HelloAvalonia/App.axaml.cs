@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using HelloAvalonia.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HelloAvalonia;
 
@@ -16,7 +17,7 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = Program.Container.GetInstance<MainWindow>();
+            desktop.MainWindow = Program.Container.GetRequiredService<MainWindow>();
         }
 
         base.OnFrameworkInitializationCompleted();

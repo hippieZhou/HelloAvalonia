@@ -9,16 +9,17 @@
         x:Class="HelloAvalonia.Views.MainWindow"
         x:Name="Main"
         Icon="/Assets/avalonia-logo.ico"
-        Title="HelloAvalonia">
+        Title="HelloAvalonia"
+        x:DataType="vm:MainWindowViewModel">
 
     <Window.Styles>
         <StyleInclude Source="/Styles/Custom.axaml" />
     </Window.Styles>
-
+    
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-
+    
     <DockPanel>
         <Panel Background="#512BD4" DockPanel.Dock="Top">
             <TextBlock
@@ -34,38 +35,38 @@
             Spacing="25"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-
+    
             <Svg Path="/Assets/dotnet_bot.svg"
                  x:Name="Bot"
                  Height="300"
                  Classes.ten="{Binding PlayAnimation}"
                  IsEnabled="{Binding IsEnabled, Mode=TwoWay}" />
-
+    
             <TextBlock
                 Text="Hello, World!"
                 FontSize="32"
                 HorizontalAlignment="Center" />
-
+    
             <TextBlock
                 Text="Welcome to Avalonia UI"
                 FontSize="17"
                 HorizontalAlignment="Center" />
-
+    
             <Button
                 Content="{Binding Text}"
                 Command="{Binding ClickCommand}"
                 CommandParameter="{Binding #Bot}"
                 IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                 HorizontalAlignment="Center" />
-
+    
             <Button
                 Content="Show Dialog"
                 Command="{Binding ShowDialogCommand}"
                 CommandParameter="{Binding #Main.ShowDialogInteraction}"
                 HorizontalAlignment="Center">
-
+    
             </Button>
-
+    
         </StackPanel>
     </DockPanel>
 

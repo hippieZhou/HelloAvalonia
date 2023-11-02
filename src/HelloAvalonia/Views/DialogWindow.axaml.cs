@@ -1,4 +1,3 @@
-using System;
 using HelloAvalonia.ViewModels;
 
 namespace HelloAvalonia.Views;

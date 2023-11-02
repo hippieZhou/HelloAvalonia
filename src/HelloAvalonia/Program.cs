@@ -3,27 +3,37 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Svg.Skia;
 using Avalonia.Xaml.Interactivity;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using HelloAvalonia.Models;
+using HelloAvalonia.Services;
 using HelloAvalonia.ViewModels;
+using HelloAvalonia.Views;
 using Lamar;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HelloAvalonia;
 
 class Program
 {
-    public static IContainer Container { get; }
+    public static IServiceProvider Container => Ioc.Default;
 
     static Program()
     {
-        Container = new Container(cfg =>
+        var container = new Container(cfg =>
         {
+            cfg.AddHttpClient();
+            cfg.For<ICatsImageService>().Use<CatsImageService>();
+            cfg.For<IDialogService>()
+                .Use(new DialogService<DialogWindow>(() => new DialogWindow()));
             cfg.Scan(scan =>
             {
                 scan.AssemblyContainingType<Program>();
                 scan.AddAllTypesOf<ViewModelBase>();
-                scan.AddAllTypesOf<IControl>();
+                scan.AddAllTypesOf<Control>();
                 scan.WithDefaultConventions();
             });
         });
+        Ioc.Default.ConfigureServices(container);
     }
         
     // Initialization code. Don't use any Avalonia, third-party APIs or any

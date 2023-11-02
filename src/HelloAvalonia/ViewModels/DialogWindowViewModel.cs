@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -10,19 +8,20 @@ namespace HelloAvalonia.ViewModels;
 
 public partial class DialogWindowViewModel : ViewModelBase
 {
-    [SetterProperty] 
-    public ICatsImageService? Cats { get; set; }
+    [SetterProperty] public ICatsImageService  CatsImageService { get; set; }
 
+    [ObservableProperty] private bool _loading;
     [ObservableProperty] private Bitmap? _catImage;
+    
 
     [RelayCommand]
     private async Task Opened()
     {
-        if (Cats is { })
-        {
-            var bitmap = await Cats.GetRandomImage();
-            CatImage = bitmap;
-        }
+        Loading = true;
+        var a = CatsImageService;
+        var bitmap = await CatsImageService.GetRandomImage();
+        CatImage = bitmap;
+        Loading = false;
     }
 
     [RelayCommand]
