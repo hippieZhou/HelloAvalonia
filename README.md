@@ -7,7 +7,7 @@
 
 </div>
 
-> Inspired by [Dependency Injection with Avalonia UI Apps](https://khalidabuhakmeh.com/dependency-injection-with-avalonia-ui-apps), I have add some featuse in this demo.
+> Inspired by [Dependency Injection with Avalonia UI Apps](https://khalidabuhakmeh.com/dependency-injection-with-avalonia-ui-apps), I have add some features in this demo.
 
 Todo List
 
